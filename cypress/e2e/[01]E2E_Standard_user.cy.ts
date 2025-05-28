@@ -15,10 +15,9 @@ const overviewPage = new OverviewPage();
 const orderPage = new OrderPage();
 
 describe('E2E_01_Standard_user – purchase flow', () => {
-  const WAIT = 500
+  
   beforeEach(() => {
     cy.visit('/');
-    cy.wait(WAIT)
   });
 
   it('completes purchase as standard_user', () => {
@@ -26,39 +25,31 @@ describe('E2E_01_Standard_user – purchase flow', () => {
     loginPage.checkLoginPage();
 
     loginPage.login(config.username, config.password);
-    cy.wait(WAIT)
+
+    inventoryPage.checkInventoryPage();
 
     inventoryPage.pageLogo();
-    cy.wait(WAIT)
 
     inventoryPage.addFirstProductToCart();
-    cy.wait(WAIT)
 
     inventoryPage.goToShoppingCart();
-    cy.wait(WAIT)
     
     shoppingCartPage.checkCartPage();
-    cy.wait(WAIT)
     
     shoppingCartPage.goToCheckout();
-    cy.wait(WAIT)
 
-    checkoutPage.checkCheckoutPage();
-    cy.wait(WAIT)
+    checkoutPage.checkCheckoutSection();
 
-    checkoutPage.compileCheckoutForm();
-    cy.wait(WAIT)
+    checkoutPage.fillCheckoutForm();
     
     overviewPage.checkOverviewPage();
-    cy.wait(WAIT)
 
     overviewPage.checkItemTotalAmount();
-    cy.wait(WAIT)
 
     orderPage.goToOrderPage();
-    cy.wait(WAIT)
 
     orderPage.checkOrderPage();
 
+    orderPage.goBackToProducts();
   });
 });

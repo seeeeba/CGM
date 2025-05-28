@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "target": "ES6",
+    "module": "CommonJS",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,      // migliora le performance
+    "noEmit": true,            // non emette file .js
+    "types": ["cypress", "node"]
+  },
+  "include": [
+    "cypress/**/*.ts",         // i tuoi page objects & test
+    "cypress.config.ts",       // per tipizzare la config
+    "cypress/support/**/*.ts"  // support e commands
+  ]
+}
